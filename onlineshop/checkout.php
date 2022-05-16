@@ -18,7 +18,7 @@
 												VALUES ('$nama','$alamat','$nohp', '$tgl','$norek','$namarek','$bank','$grand_total')");
         if($detail_query)
         {
-            echo "<meta http-equiv='refresh' content='0,url=".BASE_URL."payment.php'>";
+            echo "<meta http-equiv='refresh' content='0,url=".BASE_URL."success.php'>";
         }
         $cart_query = mysqli_query($connect, "SELECT * FROM cart");
         $price_total = 0;
@@ -39,7 +39,7 @@
         }
 		else
 		{
-			echo "<meta http-equiv='refresh' content='0,url=".BASE_URL."payment.php'>";
+			echo "<meta http-equiv='refresh' content='0,url=".BASE_URL."success.php'>"; // ada page ttg order success gitu deh
 		}
     };
 ?>
