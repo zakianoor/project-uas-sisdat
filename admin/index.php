@@ -87,72 +87,47 @@
 
 <div class="card mb-3">
     <div class="card-header">
-        <i class="fas fa-chart-area"></i> Area Chart Example</div>
-    <div class="card-body">
-        <canvas id="myAreaChart" width="100%" height="30"></canvas>
-    </div>
-    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-</div>
-
-<div class="card mb-3">
-    <div class="card-header">
-        <i class="fas fa-table"></i> Data Table Example</div>
+        <i class="fas fa-table"></i> Data Table Penjualan</div>
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
+                        <th>No.</th>
+                        <th>Tanggal</th>
+                        <th>Nama</th>
+                        <th>Alamat</th>
+                        <th>Order</th>
+                        <th>Total</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td>2011/04/25</td>
-                        <td>$320,800</td>
-                    </tr>
-                    <tr>
-                        <td>Garrett Winters</td>
-                        <td>Accountant</td>
-                        <td>Tokyo</td>
-                        <td>63</td>
-                        <td>2011/07/25</td>
-                        <td>$170,750</td>
-                    </tr>
-                    <tr>
-                        <td>Ashton Cox</td>
-                        <td>Junior Technical Author</td>
-                        <td>San Francisco</td>
-                        <td>66</td>
-                        <td>2009/01/12</td>
-                        <td>$86,000</td>
-                    </tr>
-                    <tr>
-                        <td>Cedric Kelly</td>
-                        <td>Senior Javascript Developer</td>
-                        <td>Edinburgh</td>
-                        <td>22</td>
-                        <td>2012/03/29</td>
-                        <td>$433,060</td>
-                    </tr>
-                    <tr>
-                        <td>Airi Satou</td>
-                        <td>Accountant</td>
-                        <td>Tokyo</td>
-                        <td>33</td>
-                        <td>2008/11/28</td>
-                        <td>$162,700</td>
-                    </tr>
-
+                    <?php
+                        $query = mysqli_query($connect, "SELECT * FROM transaksi ");
+                        $data = mysqli_fetch_assoc($query);
+                        if(mysqli_num_rows($query) > 0)
+                        {
+                            $no = 1;
+                            do
+                            {
+                                ?>
+                                    <tr>
+                                        <td><?=$no++;?></td>
+                                        <td><?=$data['tgl_transaksi'];?></td>
+                                        <td><?=$data['nama_buyer'];?></td>
+                                        <td><?=$data['alamat_buyer'];?></td>
+                                        <td><?=$data['#'];?></td>
+                                        <td><?=$data['#'];?></td>
+                                    </tr>
+                                <?php
+                            }while($data = mysqli_fetch_assoc($query));
+                        }
+                        else
+                        {
+                            echo "<tr><td colspan='7'><center>Belum ada data!</center></td></tr>";
+                        }
+                    ?>
                 </tbody>
             </table>
         </div>
