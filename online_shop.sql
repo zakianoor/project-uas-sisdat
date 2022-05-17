@@ -27,7 +27,7 @@ INSERT INTO `admin` (`id_adm`, `nama_adm`, `usn_adm`, `pass_adm`) VALUES
 CREATE TABLE `barang` (
   `id_brg ` int(6) NOT NULL,
   `nama_brg` varchar(50) NOT NULL,
-  `harga_brg` int(50) NOT NULL,
+  `harga_brg` varchar(50) NOT NULL,
   `stok_brg` int(5) NOT NULL,
   `img_brg` varchar(200) NOT NULL,
   `ket_brg` varchar(200) NOT NULL,
@@ -39,10 +39,10 @@ CREATE TABLE `barang` (
 --
 
 INSERT INTO `barang` (`id_brg`, `nama_brg`, `harga_brg`, `stok_brg`, `img_brg`, `id_kategori`) VALUES
-(4, 'Masala Bread', 30000, 50, '41.png', 'Roti yummy', 5),
-(5, 'Assorted Muffins', 15000, 50, '46.png', 'Assorted Muffin senaaaaaaak bings', 7),
-(6, 'Butter Croissants', 25000, 50, '38.png', 'Butter Croissants terenak sedunia harus beli sih', 7),
-(8, 'bread', 22500, 50, '45.png', 'Roti yummy', 5);
+(4, 'Masala Bread', `30000`, 50, '41.png', 'Roti yummy', 5),
+(5, 'Assorted Muffins', `15000`, 50, '46.png', 'Assorted Muffin senaaaaaaak bings', 7),
+(6, 'Butter Croissants', `25000`, 50, '38.png', 'Butter Croissants terenak sedunia harus beli sih', 7),
+(8, 'bread', `22500`, 50, '45.png', 'Roti yummy', 5);
 
 -- --------------------------------------------------------
 
