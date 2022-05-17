@@ -97,23 +97,8 @@
 					</ul>
 				</div>
 									<div class="checkout-right-basket">
-                        
-                        <?php
-                        $query = mysqli_query($connect, "SELECT * FROM buyer");
-                        $data = mysqli_fetch_assoc($query);
-                        if(mysqli_num_rows($query) > 0)
-                        {
-                            $no = 1;
-                            do
-                            {
-                            ?>
-				        	    <a href="checkout.php?id=<?=$data['id_buyer'];?>">Procced to checkout<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
-			      	
-                            <?php
-                            }
-                            while($data = mysqli_fetch_assoc($query));
-                        }
-                            ?>
+				        	   <a href="checkout.php?id">Procced to checkout<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+
                     </div>
 					</div>
 			
