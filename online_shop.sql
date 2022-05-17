@@ -27,7 +27,7 @@ INSERT INTO `admin` (`id_adm`, `nama_adm`, `usn_adm`, `pass_adm`) VALUES
 CREATE TABLE `barang` (
   `id_brg ` int(6) NOT NULL,
   `nama_brg` varchar(50) NOT NULL,
-  `harga_brg` varchar(50) NOT NULL,
+  `harga_brg` int(50) NOT NULL,
   `stok_brg` int(5) NOT NULL,
   `img_brg` varchar(200) NOT NULL,
   `ket_brg` varchar(200) NOT NULL,
