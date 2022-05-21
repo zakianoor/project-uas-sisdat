@@ -25,19 +25,14 @@
 	   $nama_brg = $_POST['nama_brg'];
 	   $harga_brg = $_POST['harga_brg'];
 	   $img_brg = $_POST['img_brg'];
+	   $id_brg = $_POST['id_brg'];
 	   $product_quantity = 1;
 	
 	   $select_cart = mysqli_query($connect, "SELECT * FROM cart WHERE nama_brg = '$nama_brg'");
 	
-	   if(mysqli_num_rows($select_cart) > 0)
-	   {
-		  $message = 'Product already added to cart';
-	   }
-	   else
-	   {
-		  $insert_product = mysqli_query($connect, "INSERT INTO cart (nama_brg, harga_brg, img_brg, qyt_brg) VALUES('$nama_brg', '$harga_brg', '$img_brg', '$product_quantity')");
-		  $message = 'Product added to cart succesfully';
-	   }
+
+	   $insert_product = mysqli_query($connect, "INSERT INTO cart (nama_brg, harga_brg, img_brg, qyt_brg, id_buyer, id_brg, status) VALUES('$nama_brg', '$harga_brg', '$img_brg', '$product_quantity','$id_buyer','$id_brg','1')");
+	   $message = 'Product added to cart succesfully';
 	
 	}
 ?>
@@ -120,7 +115,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="w3l_header_rightc">
 			<header class="header-cart">
 				<?php
-					$select_rows = mysqli_query($connect, "SELECT * FROM cart") or die("query failed");
+					$select_rows = mysqli_query($connect, "SELECT * FROM cart where status = '1'") or die("query failed");
 					$row_count = mysqli_num_rows($select_rows);
 				?>
 			</header>
@@ -238,6 +233,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<div class="snipcart-details agileinfo_single_right_details">
 									<form action="#" method="post">
 										<fieldset>
+											<input type="hidden" name="id_brg" value="<?php echo $data['id_brg'];?>"/>
 											<input type="hidden" name="nama_brg" value="<?php echo $data['nama_brg'];?>"/>
 											<input type="hidden" name="harga_brg" value="<?php echo $data['harga_brg'];?>"/>
           									<input type="hidden" name="img_brg" value="<?php echo $data['img_brg']; ?>">

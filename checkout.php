@@ -2,46 +2,7 @@
     $title = "Checkout";
    
    require "include/header.php";
-
-    if(isset($_POST['order_btn']))
-    {
-        $nama = $_POST['nama'];
-        $alamat = $_POST['alamat'];
-        $nohp = $_POST['telp'];
-		$grand_total = $_POST['grand_total'];
-		$namarek = $_POST['namarek'];
-		$norek = $_POST['norek'];
-		$bank = $_POST['bank'];
-        $tgl = date("Y-m-d H:i:s");
-		$detail_query = mysqli_query($connect, "INSERT INTO transaksi (nama_buyer, alamat_buyer, telp_buyer, tgl_transaksi, 
-												norek_buyer, namarek_buyer, bank_buyer, total_transaksi) 
-												VALUES ('$nama','$alamat','$nohp', '$tgl','$norek','$namarek','$bank','$grand_total')");
-        if($detail_query)
-        {
-            echo "<meta http-equiv='refresh' content='0,url=".BASE_URL."success.php'>";
-        }
-        $cart_query = mysqli_query($connect, "SELECT * FROM cart");
-        $price_total = 0;
-        if(mysqli_num_rows($select_cart) > 0)
-        {
-            do
-            {
-                $product_name[] = $product_item['nama_brg'] .' ('. $product_item['qyt_brg'] .') ';
-                $product_price = number_format($product_item['harga_brg'] * $product_item['qyt_brg']);
-                $price_total += $product_price;
-            }while($product_item = mysqli_fetch_assoc($cart_query));
-        };
-        $total_product = implode(', ',$product_name);
-		
-		if(mysqli_num_rows($select_cart) == 0)
-        {
-            $error = "Failed Checkout. Your cart is still empty!";
-        }
-		else
-		{
-			echo "<meta http-equiv='refresh' content='0,url=".BASE_URL."success.php'>"; // ada page ttg order success gitu deh
-		}
-    };
+   
 ?>
 			</nav>
 		</div>
@@ -68,7 +29,7 @@
 					</thead>
 					<tbody>
                         <?php
-                            $select_cart = mysqli_query($connect, "SELECT * FROM cart");
+                            $select_cart = mysqli_query($connect, "SELECT * FROM cart where status ='1'");
                             $grand_total = 0;
                             
                             $fetch_cart = mysqli_fetch_assoc($select_cart);
@@ -96,6 +57,52 @@
                             {
                                 echo "<tr><td colspan='7'><center>Your cart is still empty!</center></td></tr>";
                             }
+
+							$id_buyer = $_SESSION['id_buyer'];
+    if(isset($_POST['order_btn']))
+    {
+        $nama = $_POST['nama'];
+        $alamat = $_POST['alamat'];
+        $nohp = $_POST['nohp'];
+		$namarek = $_POST['namarek'];
+		$norek = $_POST['norek'];
+		$bank = $_POST['bank'];
+        $tgl = date("Y-m-d H:i:s");
+		$detail_query = mysqli_query($connect, "INSERT INTO transaksi (nama_buyer, alamat_buyer, telp_buyer, tgl_transaksi, 
+												norek_buyer, namarek_buyer, bank_buyer, total_transaksi,id_buyer) 
+												VALUES ('$nama','$alamat','$nohp', '$tgl','$norek','$namarek','$bank','$grand_total','$id_buyer')");
+		$last = mysqli_query($connect, "SELECT * FROM transaksi	WHERE id_transaksi IN (SELECT MAX(id_transaksi) FROM transaksi)");
+		$last_id = mysqli_fetch_assoc($last);
+		$id = $last_id['id_transaksi'];
+		$cart_trans = mysqli_query($connect, "UPDATE cart SET id_transaksi = '$id' WHERE id_buyer = '$id_buyer' AND status = '1'");
+        if($detail_query)
+        {
+            echo "<meta http-equiv='refresh' content='0,url=".BASE_URL."products.php'>";
+        }
+
+		$change_status = mysqli_query($connect, "UPDATE cart SET status = '2' WHERE id_buyer = '$id_buyer'");
+        $cart_query = mysqli_query($connect, "SELECT * FROM cart");
+        $price_total = 0;
+        if(mysqli_num_rows($select_cart) > 0)
+        {
+            do
+            {
+                $product_name[] = $product_item['nama_brg'] .' ('. $product_item['qyt_brg'] .') ';
+                $product_price = number_format($product_item['harga_brg'] * $product_item['qyt_brg']);
+                $price_total += $product_price;
+            }while($product_item = mysqli_fetch_assoc($cart_query));
+        };
+        $total_product = implode(', ',$product_name);
+		
+		if(mysqli_num_rows($select_cart) == 0)
+        {
+            $error = "Failed Checkout. Your cart is still empty!";
+        }
+		else
+		{
+			echo "<meta http-equiv='refresh' content='0,url=".BASE_URL."products.php'>"; // ada page ttg order success gitu deh
+		}
+    };
                                 ?>
 				    </tbody>
                 </table>
@@ -136,9 +143,7 @@
 											</div>
 										</div>
 									</section>
-								</form>
 					  <h4>Complete Your Payment</h4>
-				<form action="#" method="post" class="creditly-card-form agileinfo_form">
 									<section class="creditly-wrapper wthree, w3_agileits_wrapper">
 										<div class="information-wrapper">
 											<div class="first-row form-group">
@@ -175,16 +180,11 @@
 											</div>
 										</div>
 									</section>
+									<input type="submit" name="order_btn" value="Order Now!" class="button"/>
+
 								</form>
 								
-									<div class="checkout-right-basket">
-										<form action="#" method="post">
-											<fieldset>
-												<input type="submit" name="order_btn" value="Order Now!" class="button"/>
-											</fieldset>
-										</form>
-										
-									</div>
+									
 					</div>
 			
 				<div class="clearfix"> </div>

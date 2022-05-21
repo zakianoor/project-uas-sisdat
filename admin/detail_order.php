@@ -1,6 +1,7 @@
 <?php 
     $title = "Daftar Penjualan";
     require "includes/header.php"; 
+    $id_transaksi = $_GET['id_transaksi'];
 ?>
 
             <div class="container-fluid">
@@ -24,21 +25,14 @@
                                 <thead>
                                     <tr>
                                         <th>No.</th>
-                                        <th>Tanggal</th>
-                                        <th>Nama</th>
-                                        <th>Alamat</th>
-                                        <th>No. Handphone</th>
-                                        <th>Nama Rekening</th>
-                                        <th>No. Rekening</th>
-                                        <th>Bank</th>
-                                        <th>Order</th>
-                                        <th>Total</th>
+                                        <th>Nama Pesanan</th>
+                                        <th>Harga</th>
                                     </tr>
                                 </thead>
                                 
                                 <tbody>
                                     <?php
-                                        $query = mysqli_query($connect, "SELECT * FROM transaksi ");
+                                        $query = mysqli_query($connect, "SELECT * FROM cart WHERE id_transaksi = '$id_transaksi'");
                                         $data = mysqli_fetch_assoc($query);
                                         if(mysqli_num_rows($query) > 0)
                                         {
@@ -48,15 +42,8 @@
                                                 ?>
                                                 <tr>
                                                     <td><?=$no++;?></td>
-                                                    <td><?=$data['tgl_transaksi'];?></td>
-                                                    <td><?=$data['nama_buyer'];?></td>
-                                                    <td><?=$data['alamat_buyer'];?></td>
-                                                    <td><?=$data['telp_buyer'];?></td>
-                                                    <td><?=$data['namarek_buyer'];?></td>
-                                                    <td><?=$data['norek_buyer'];?></td>
-                                                    <td><?=$data['bank_buyer'];?></td>
-                                                    <td><a href="detail_order.php?id_transaksi=<?=$data['id_transaksi']?>">Detail</a></td>
-                                                    <td>Rp. <?=number_format($data['total_transaksi'])?></td>
+                                                    <td><?=$data['nama_brg'];?></td>
+                                                    <td>Rp. <?=number_format($data['harga_brg'])?></td>
                                                 </tr>
                                                 <?php
                                             }

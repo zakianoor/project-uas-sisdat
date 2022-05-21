@@ -2,7 +2,6 @@
     $title = "Cart";
 
     require "include/header.php";
-
     if(isset($_POST['update_update_btn']))
     {
         $update_value = $_POST['update_quantity'];
@@ -47,7 +46,7 @@
 					</thead>
 					<tbody>
                         <?php
-                            $select_cart = mysqli_query($connect, "SELECT * FROM cart");
+                            $select_cart = mysqli_query($connect, "SELECT * FROM cart where status = '1' AND id_buyer = '$id_buyer'");
                             $grand_total = 0;
                             
                             $fetch_cart = mysqli_fetch_assoc($select_cart);
@@ -97,8 +96,23 @@
 					</ul>
 				</div>
 									<div class="checkout-right-basket">
-				        	   <a href="checkout.php?id">Procced to checkout<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
-
+                        
+                        <?php
+                        $query = mysqli_query($connect, "SELECT * FROM buyer");
+                        $data = mysqli_fetch_assoc($query);
+                        if(mysqli_num_rows($query) > 0)
+                        {
+                            $no = 1;
+                            do
+                            {
+                            ?>
+				        	    <a href="checkout.php?id=<?=$data['id_buyer'];?>">Procced to checkout<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+			      	
+                            <?php
+                            }
+                            while($data = mysqli_fetch_assoc($query));
+                        }
+                            ?>
                     </div>
 					</div>
 			
