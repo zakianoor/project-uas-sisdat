@@ -3,7 +3,7 @@
 	<div class="newsletter">
 		<div class="container">
 			<div class="w3agile_newsletter_left">
-				<h3>sign up for our newsletter</h3>
+				<h3>Sign up for our newsletter</h3>
 			</div>
 			<div class="w3agile_newsletter_right">
 				<form action="#" method="post">
@@ -23,7 +23,8 @@
 				<div class="col-md-3 w3_footer_grid agile_footer_grids_w3_footer">
 					<div class="w3_footer_grid_bottom">
 						<h4>100% secure payments</h4>
-						<img src="asset/images/card.png" alt=" " class="img-responsive" />
+						<img src="asset/images/card1.png" alt=" " class="img-responsive" />
+						<img src="asset/images/card2.png" alt=" " class="img-responsive" />
 					</div>
 				</div>
 				<div class="col-md-3 w3_footer_grid agile_footer_grids_w3_footer">

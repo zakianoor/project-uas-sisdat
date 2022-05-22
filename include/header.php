@@ -1,6 +1,7 @@
 <?php 
     require "config/connect.php"; 
 	session_start();
+    $id_buyer = $_SESSION['id_buyer'];
 
     if(!isset($_SESSION['usn'])) 
     {
@@ -70,7 +71,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="w3ls_vegetables">
 							<ul class="dropdown-menu drp-mnu">
 								<li><a href="login.php">Sign In</a></li>
-								<li><a href="regist.php">Sign Up</a></li>
 								<li><a href="logout.php">Sign Out</a></li>
 							</ul>
 						</div>                  
@@ -84,7 +84,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="w3l_header_rightc">
 			<header class="header-cart">
 				<?php
-					$select_rows = mysqli_query($connect, "SELECT * FROM cart") or die("query failed");
+					$select_rows = mysqli_query($connect, "SELECT * FROM cart where status='1'") or die("query failed");
 					$row_count = mysqli_num_rows($select_rows);
 				?>
 			</header>

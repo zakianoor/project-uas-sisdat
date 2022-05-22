@@ -25,11 +25,11 @@
                                 <thead>
                                     <tr>
                                         <th>No.</th>
+                                        <th>Image</th>
                                         <th>Nama</th>
                                         <th>Harga</th>
                                         <th>Stok</th>
                                         <th>Description</th>
-                                        <th>Image</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -46,11 +46,11 @@
                                                 ?>
                                                 <tr>
                                                     <td><?=$no++;?></td>
+                                                    <td><img src="<?=BASE_URL;?>assets/img_brg/<?=$data['img_brg'];?>"></td>
                                                     <td><?=$data['nama_brg'];?></td>
                                                     <td><?=$data['harga_brg'];?></td>
                                                     <td><?=$data['stok_brg'];?></td>
                                                     <td><?=$data['ket_brg'];?></td>
-                                                    <td><img src="<?=BASE_URL;?>assets/img_brg/<?=$data['img_brg'];?>"></td>
                                                     <td>
                                                         <a href="barang_edit.php?id=<?=$data['id_brg'];?>"class="btn btn-sm btn-success">Edit<a>  
                                                         <a href="barang_delete.php?id=<?=$data['id_brg'];?>"class="btn btn-sm btn-danger">Hapus<a>

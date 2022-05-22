@@ -101,7 +101,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="w3ls_vegetables">
 							<ul class="dropdown-menu drp-mnu">
 								<li><a href="login.php">Sign In</a></li>
-								<li><a href="regist.php">Sign Up</a></li>
 								<li><a href="logout.php">Sign Out</a></li>
 							</ul>
 						</div>                  
@@ -187,7 +186,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<a href="products.php" class="dropdown-toggle" data-toggle="dropdown">Our Products<span class="caret"></span></a>				
 						<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">
 								<div class="w3ls_vegetables">
-									<ul>	
 									<?php
 										$Qkategori = mysqli_query($connect, "SELECT * FROM kategori");
 										$kategori = mysqli_fetch_assoc($Qkategori);
@@ -195,11 +193,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										{
 													
 									?>
+									<ul>	
 										<li><a href="?filter=<?=$kategori['id_kategori'];?>"><?=$kategori['nama_kategori'];?></a></li>
+									</ul>
 									<?php
 										}while($kategori = mysqli_fetch_assoc($Qkategori));
 									?>
-									</ul>
 								</div>                  
 							</div>			
 					</li>

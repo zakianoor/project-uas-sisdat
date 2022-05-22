@@ -1,6 +1,6 @@
 <?php
 
-    define("BASE_URL", "http://localhost/onlineshop/");
+    define("BASE_URL", "http://localhost/online_shop/");
     define("WEBNAME", "La Pâtisserie");
     $connect = mysqli_connect("localhost", "root", "", "online_shop");
 

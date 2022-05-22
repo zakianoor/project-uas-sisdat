@@ -10,7 +10,7 @@
 		<section class="slider">
 			<div class="flexslider">
 						<div class="w3l_banner_nav_right_banner">
-							<h3>Make your <span>food</span> with Spicy.</h3>
+							<h3>For Every <span> Flavour, </span> A Story to Tell</h3>
 							<div class="more">
 								<a href="products.php" class="button--saqui button--round-l button--text-thick" data-text="Shop now">Shop now</a>
 								</div>
@@ -39,26 +39,20 @@
 	<div class="wthree_banner_bottom_left_grid_sub1">
 		<div class="col-md-4 wthree_banner_bottom_left">
 			<div class="wthree_banner_bottom_left_grid">
-				<img src="asset/images/4.jpg" alt=" " class="img-responsive">
-				<div class="wthree_banner_bottom_left_grid_pos">
-					<h4>Discount Offer <span>25%</span></h4>
-				</div>
+				<img src="asset/images/kiri.png" alt=" " class="img-responsive">
+
 			</div>
 		</div>
 		<div class="col-md-4 wthree_banner_bottom_left">
 			<div class="wthree_banner_bottom_left_grid">
-				<img src="asset/images/5.jpg" alt=" " class="img-responsive">
-				<div class="wthree_banner_btm_pos">
-					<h3>introducing <span>best store</span> for <i>groceries</i></h3>
-				</div>
+				<img src="asset/images/tengah.png" alt=" " class="img-responsive">
+
 			</div>
 		</div>
 		<div class="col-md-4 wthree_banner_bottom_left">
 			<div class="wthree_banner_bottom_left_grid">
-				<img src="asset/images/6.jpg" alt=" " class="img-responsive">
-				<div class="wthree_banner_btm_pos1">
-					<h3>Save <span>Upto</span> $10</h3>
-				</div>
+				<img src="asset/images/kanan.png" alt=" " class="img-responsive">
+
 			</div>
 		</div>
 		<div class="clearfix"> </div>

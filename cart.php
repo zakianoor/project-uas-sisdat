@@ -2,6 +2,7 @@
     $title = "Cart";
 
     require "include/header.php";
+    $id_buyer = $_SESSION['id_buyer'];
     if(isset($_POST['update_update_btn']))
     {
         $update_value = $_POST['update_quantity'];
@@ -61,13 +62,15 @@
                                         <td><img src="<?=BASE_URL;?>assets/img_brg/<?=$fetch_cart['img_brg'];?>"></td>
                                         <td><?=$fetch_cart['nama_brg'];?></td>
                                         <td>Rp<?=number_format($fetch_cart['harga_brg']);?>,-</td>
-                                        <td>
+                                        <!--<td>
                                         <form action="" method="post">
                                             <input type="hidden" name="update_quantity_id"  value="<?php echo $fetch_cart['id_cart']; ?>" >
                                             <input type="number" name="update_quantity" min="1"  value="<?php echo $fetch_cart['qyt_brg']; ?>" >
                                             <input type="submit" value="update" name="update_update_btn">
                                         </form>   
-                                        </td>
+                                        </td>-->
+                                        
+                                        <td><?=$fetch_cart['qyt_brg'];?></td>
                                         <?php  $sub_total = $fetch_cart['harga_brg'] * $fetch_cart['qyt_brg']; ?>
                                         <td>Rp<?php echo number_format($sub_total); ?>,-</td>
                                         <td>
@@ -98,7 +101,7 @@
 									<div class="checkout-right-basket">
                         
                         <?php
-                        $query = mysqli_query($connect, "SELECT * FROM buyer");
+                        $query = mysqli_query($connect, "SELECT * FROM buyer where id_buyer = '$id_buyer'");
                         $data = mysqli_fetch_assoc($query);
                         if(mysqli_num_rows($query) > 0)
                         {

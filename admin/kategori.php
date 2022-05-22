@@ -1,12 +1,6 @@
 <?php 
     $title = "Daftar Kategori";
     require "includes/header.php"; 
-    
-    if (!isset($_SESSION)) 
-    {
-        session_start();
-    }
-
 ?>
 
             <div class="container-fluid">
@@ -38,7 +32,7 @@
                                 
                                 <tbody>
                                     <?php
-                                        $query = mysqli_query($connect, "SELECT * FROM kategori ");
+                                        $query = mysqli_query($connect, "SELECT * FROM kategori");
                                         $data = mysqli_fetch_assoc($query);
                                         if(mysqli_num_rows($query) > 0)
                                         {
@@ -50,8 +44,8 @@
                                                     <td><?=$no++;?></td>
                                                     <td><?=$data['nama_kategori'];?></td>
                                                     <td>
-                                                        <a href="../kategori_edit.php?id=<?=$data['id_kategori'];?>"class="btn btn-sm btn-success">Edit<a>  
-                                                        <a href="admin/kategori_delete.php?id=<?=$data['id_kategori'];?>"class="btn btn-sm btn-danger">Hapus<a>
+                                                        <a href="kategori_edit.php?id=<?=$data['id_kategori'];?>"class="btn btn-sm btn-success">Edit<a>  
+                                                        <a href="kategori_delete.php?id=<?=$data['id_kategori'];?>"class="btn btn-sm btn-danger">Hapus<a>
                                                     </td>       
                                                 </tr>
                                                 <?php

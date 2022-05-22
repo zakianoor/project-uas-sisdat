@@ -11,13 +11,13 @@
                         <a href="index.php">Dashboard</a>
                     </li>
                     <li class="breadcrumb-item active">
-                        <a href="penjualan.php">Penjualan</a>
+                        <a href="penjualan.php">Back</a>
                     </li>
                 </ol>
 
                 <div class="card mb-3">
                     <div class="card-header">
-                        <i class="fas fa-table"></i> Data Table Penjualan
+                        <i class="fas fa-table"></i> Data Detail Pesanan
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -25,6 +25,7 @@
                                 <thead>
                                     <tr>
                                         <th>No.</th>
+                                        <th>Image</th>
                                         <th>Nama Pesanan</th>
                                         <th>Harga</th>
                                     </tr>
@@ -42,6 +43,7 @@
                                                 ?>
                                                 <tr>
                                                     <td><?=$no++;?></td>
+                                                    <td><img src="<?=BASE_URL;?>assets/img_brg/<?=$data['img_brg'];?>"></td>
                                                     <td><?=$data['nama_brg'];?></td>
                                                     <td>Rp. <?=number_format($data['harga_brg'])?></td>
                                                 </tr>

@@ -1,9 +1,9 @@
 <?php
     require "includes/header.php";
 
-    $id_kategori = $_GET['id_kategori'];
+    $id = $_GET['id'];
 
-    $query = mysqli_query($connect, "DELETE FROM kategori WHERE id_kategori = '$id_kategori'");
+    $query = mysqli_query($connect, "DELETE FROM kategori WHERE id_kategori = '$id'");
 
     if($query)  
     {
